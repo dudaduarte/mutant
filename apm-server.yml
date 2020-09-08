@@ -1,0 +1,29 @@
+apm-server:
+  rum.enabled: true
+  host: apm-server:8200
+  kibana:
+    enabled: true
+    host: kibana:5601
+
+setup:
+  kibana:
+    hosts: kibana:5601
+  template:
+    settings.index.number_of_replicas: 0
+    name: "apm-server"
+    pattern: "filebeat-*"
+    overwrite: false
+
+# logging:
+#   level: info
+#   to_files: true
+#   files:
+#     path: /var/log/apm-server
+#     name: apm-server
+#     keepfiles: 7
+#     permissions: 0644
+
+output.elasticsearch:
+    hosts: [ "http://elasticsearch:9200" ]
+    # username: "apm_system"
+    # password: "dxJrNYXWiGyd7QJRS12t"
